@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: springdataredis
+#configuration of redis
+redis:
+  host: localhost
+  port: 6379
+  database: 0 #operating number 0 database
+  jedis:
+    pool:
+      max-active: 8 #max connection
+      max-wait: 1ms
+      max-idle: 4
+      min-idle: 0
