@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.connection.DataType;
 import org.springframework.data.redis.core.*;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -103,7 +104,23 @@ public class SpringDataRedisTest {
         for(String s:myZSet){
             System.out.println(s);
         }
-
+    }
+    //methods for all kinds of data
+    @Test
+    public void testCommon(){
+       //get keys
+        Set<String> keys = stringRedisTemplate.keys("*");
+        for(String key:keys){
+            System.out.println(key);
+        }
+        //whether key exists?
+        Boolean name = stringRedisTemplate.hasKey("name");
+        System.out.println(name);
+        //delete certain key
+        stringRedisTemplate.delete("name");
+        //get the value of certain key
+        DataType myset = stringRedisTemplate.type("myset");
+        System.out.println(myset);
     }
 
 
